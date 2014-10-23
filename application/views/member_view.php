@@ -8,17 +8,25 @@ $this->load->view('head', $data);
 <body>
 	<?php $this->load->view('header'); ?>
 
-	<form id="form2" name="form2" method="post" action="">
-		<p>
-			<label> <input type="radio" name="RadioGroup1" value="no_nas"
-				id="RadioGroup1_0" /> No Nasional</label> <br /> <label> <input
-				type="radio" name="RadioGroup1" value="no_daerah" id="RadioGroup1_1" />
-				No Daerah</label> <br /> <label> <input type="radio"
-				name="RadioGroup1" value="nama" id="RadioGroup1_2" /> Nama</label> <br />
-			<label> <input type="radio" name="RadioGroup1" value="nama_kartu"
-				id="RadioGroup1_3" /> Nama di Kartu</label> <br />
-		</p>
+	<form id="sortBy">
+		<input type="radio" name="radioName" value="no_nas" /> No Nasional <br />
+		<input type="radio" name="radioName" value="no_daerah" /> No Daerah <br />
+		<input type="radio" name="radioName" value="nama" /> Nama <br /> <input
+			type="radio" name="radioName" value="nama_kartu" /> Nama di Kartu<br />
 	</form>
+
+	<form>
+		<select name="info">
+			<option value="">Select a person:</option>
+			<option value="11080101">John</option>
+			<option value="11080102">Bon Jovi</option>
+
+		</select>
+	</form>
+
+	<div id="log">
+		<p>aaaa</p>
+	</div>
 
 	<?php $CI =& get_instance(); ?>
 	<?php $CI->table->set_heading('No Nas', 'No Daerah', 'Nama', 'Tgl Lahir', 'Nama di Kartu', 'Club', 'Masa Berlaku', 'Alamat', 'Gender', 'HP'); ?>
@@ -36,8 +44,17 @@ $this->load->view('head', $data);
 	//used to apply alternating row styles 
 	function zebraRows(selector,	className) 
 	{ $(selector).removeClass(className).addClass(className); }
-	</script>
 
+	$('#sortBy input').on('change', function() {
+		   alert($('input[name=radioName]:checked', '#sortBy').val()); 
+		});
+
+	$(".info").change(function() {
+		alert($(".info").val());
+	    
+	}); 
+	
+	</script>
 
 </body>
 </html>
